@@ -118,8 +118,17 @@ else
 		}
 	}
 
-	// Function to create a random 3D geometry
-	function createRandomGeometry(size)
+	// Simple seeded random number generator
+	// Using a simple hash-based approach to ensure consistency
+	function seededRandom(seed)
+	{
+		const x = Math.sin(seed) * 10000;
+		return x - Math.floor(x);
+	}
+
+	// Function to create a random 3D geometry based on window ID
+	// This ensures each window always gets the same geometry type
+	function createRandomGeometry(size, windowId)
 	{
 		const geometryTypes = [
 			() => new t.BoxGeometry(size, size, size), // Cube
@@ -130,8 +139,8 @@ else
 			() => new t.TorusGeometry(size * 0.4, size * 0.15, 16, 100) // Torus
 		];
 		
-		// Select a random geometry
-		const randomIndex = Math.floor(Math.random() * geometryTypes.length);
+		// Select a geometry based on window ID (deterministic)
+		const randomIndex = Math.floor(seededRandom(windowId) * geometryTypes.length);
 		return geometryTypes[randomIndex]();
 	}
 
@@ -155,7 +164,8 @@ else
 			c.setHSL(i * .1, 1.0, .5);
 
 			let s = 100 + i * 50;
-			let geometry = createRandomGeometry(s);
+			// Pass window ID to ensure consistent geometry for each window
+			let geometry = createRandomGeometry(s, win.id);
 			let shape = new t.Mesh(geometry, new t.MeshBasicMaterial({color: c , wireframe: true}));
 			shape.position.x = win.shape.x + (win.shape.w * .5);
 			shape.position.y = win.shape.y + (win.shape.h * .5);
