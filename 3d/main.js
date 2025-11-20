@@ -106,6 +106,16 @@ else
 	function windowsUpdated ()
 	{
 		updateNumberOfCubes();
+		updateWindowCounter();
+	}
+
+	function updateWindowCounter ()
+	{
+		let wins = windowManager.getWindows();
+		const counterElement = document.getElementById('windowCount');
+		if (counterElement) {
+			counterElement.textContent = `Windows: ${wins.length}`;
+		}
 	}
 
 	function updateNumberOfCubes ()

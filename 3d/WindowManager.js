@@ -1,3 +1,10 @@
+/**
+ * WindowManager - Manages synchronization of multiple browser windows
+ * 
+ * This class handles tracking and synchronization of multiple browser windows
+ * using localStorage as a communication mechanism. Each window registers itself
+ * and can access information about all other windows.
+ */
 class WindowManager 
 {
 	#windows;
@@ -11,7 +18,8 @@ class WindowManager
 	{
 		let that = this;
 
-		// event listener for when localStorage is changed from another window
+		// Event listener for when localStorage is changed from another window
+		// This enables cross-window communication and synchronization
 		addEventListener("storage", (event) => 
 		{
 			if (event.key == "windows")
@@ -28,7 +36,8 @@ class WindowManager
 			}
 		});
 
-		// event listener for when current window is about to ble closed
+		// Event listener for when current window is about to be closed
+		// Clean up by removing this window from the shared window list
 		window.addEventListener('beforeunload', function (e) 
 		{
 			let index = that.getWindowIndexFromId(that.#id);
@@ -39,7 +48,12 @@ class WindowManager
 		});
 	}
 
-	// check if theres any changes to the window list
+	/**
+	 * Check if there are any changes to the window list
+	 * @param {Array} pWins - Previous windows array
+	 * @param {Array} nWins - New windows array
+	 * @returns {boolean} True if windows have changed
+	 */
 	#didWindowsChange (pWins, nWins)
 	{
 		if (pWins.length != nWins.length)
@@ -59,7 +73,10 @@ class WindowManager
 		}
 	}
 
-	// initiate current window (add metadata for custom data to store with each window instance)
+	/**
+	 * Initialize current window and register it with the window manager
+	 * @param {Object} metaData - Custom metadata to store with this window instance
+	 */
 	init (metaData)
 	{
 		this.#windows = JSON.parse(localStorage.getItem("windows")) || [];
