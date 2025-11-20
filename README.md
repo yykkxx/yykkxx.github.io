@@ -5,7 +5,7 @@ A personal website showcasing interactive 3D web experiments.
 ## Features
 
 ### Multi-Window 3D Demo
-An interactive Three.js demonstration that synchronizes 3D wireframe cubes across multiple browser windows. Open the demo in several browser windows and watch as they work together to create a unified 3D scene.
+An interactive Three.js demonstration that synchronizes random 3D wireframe shapes (cubes, spheres, pyramids, etc.) across multiple browser windows. Open the demo in several browser windows and watch as they work together to create a unified 3D scene.
 
 **Try it:** [3D Demo](./3d/)
 
@@ -14,7 +14,7 @@ An interactive Three.js demonstration that synchronizes 3D wireframe cubes acros
 1. Open the [3D Demo](./3d/) page
 2. Open the same link in additional browser windows
 3. Arrange the windows on your screen
-4. Watch as the 3D cubes synchronize across all windows
+4. Watch as the random 3D shapes synchronize across all windows
 5. Move or resize windows to see the effect update in real-time
 
 ## Technical Details
