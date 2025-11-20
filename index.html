@@ -1,23 +1,185 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Welcome to nginx!</title>
-<style>
-html { color-scheme: light dark; }
-body { width: 35em; margin: 0 auto;
-font-family: Tahoma, Verdana, Arial, sans-serif; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive 3D web experiments and demonstrations">
+    <meta property="og:title" content="yykkxx - Interactive 3D Experiments">
+    <meta property="og:description" content="Explore creative web experiments with Three.js and multi-window synchronization">
+    <meta property="og:type" content="website">
+    <title>yykkxx - Interactive 3D Experiments</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            color-scheme: light dark;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .demo-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .demo-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+
+        .demo-card p {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .demo-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .demo-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .features {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features li {
+            padding: 8px 0;
+            color: #666;
+        }
+
+        .features li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        footer {
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        footer a:hover {
+            border-bottom-color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .demo-card h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
 </head>
 <body>
-<h1>Welcome to nginx!</h1>
-<p>If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.</p>
+    <div class="container">
+        <h1>Welcome to yykkxx</h1>
+        <p class="subtitle">Interactive 3D Web Experiments</p>
 
-<p>For online documentation and support please refer to
-<a href="http://nginx.org/">nginx.org</a>.<br/>
-Commercial support is available at
-<a href="http://nginx.com/">nginx.com</a>.</p>
+        <div class="demo-card">
+            <h2>🎮 Multi-Window 3D Demo</h2>
+            <p>Experience a unique Three.js demonstration that synchronizes 3D wireframe cubes across multiple browser windows.</p>
+            
+            <div class="features">
+                <ul>
+                    <li>Open in multiple windows for synchronized 3D effects</li>
+                    <li>Real-time window position and size tracking</li>
+                    <li>Smooth animations with easing transitions</li>
+                    <li>Works across different monitors</li>
+                </ul>
+            </div>
 
-<p><em>Thank you for using nginx.</em></p>
+            <a href="./3d/" class="demo-link">Launch 3D Demo</a>
+        </div>
+
+        <p style="margin-top: 30px; color: #888; font-size: 0.95em;">
+            💡 <strong>Tip:</strong> For the best experience, open the demo in 2-3 browser windows and arrange them side by side.
+        </p>
+    </div>
+
+    <footer>
+        <p>Created with <a href="https://threejs.org/" target="_blank" rel="noopener">Three.js</a></p>
+    </footer>
 </body>
 </html>
