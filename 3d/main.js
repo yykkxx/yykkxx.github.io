@@ -118,6 +118,23 @@ else
 		}
 	}
 
+	// Function to create a random 3D geometry
+	function createRandomGeometry(size)
+	{
+		const geometryTypes = [
+			() => new t.BoxGeometry(size, size, size), // Cube
+			() => new t.SphereGeometry(size * 0.5, 32, 32), // Sphere
+			() => new t.ConeGeometry(size * 0.5, size, 32), // Pyramid (Cone)
+			() => new t.TetrahedronGeometry(size * 0.6), // Tetrahedron
+			() => new t.OctahedronGeometry(size * 0.5), // Octahedron
+			() => new t.TorusGeometry(size * 0.4, size * 0.15, 16, 100) // Torus
+		];
+		
+		// Select a random geometry
+		const randomIndex = Math.floor(Math.random() * geometryTypes.length);
+		return geometryTypes[randomIndex]();
+	}
+
 	function updateNumberOfCubes ()
 	{
 		let wins = windowManager.getWindows();
@@ -129,7 +146,7 @@ else
 
 		cubes = [];
 
-		// add new cubes based on the current window setup
+		// add new shapes based on the current window setup
 		for (let i = 0; i < wins.length; i++)
 		{
 			let win = wins[i];
@@ -138,12 +155,13 @@ else
 			c.setHSL(i * .1, 1.0, .5);
 
 			let s = 100 + i * 50;
-			let cube = new t.Mesh(new t.BoxGeometry(s, s, s), new t.MeshBasicMaterial({color: c , wireframe: true}));
-			cube.position.x = win.shape.x + (win.shape.w * .5);
-			cube.position.y = win.shape.y + (win.shape.h * .5);
+			let geometry = createRandomGeometry(s);
+			let shape = new t.Mesh(geometry, new t.MeshBasicMaterial({color: c , wireframe: true}));
+			shape.position.x = win.shape.x + (win.shape.w * .5);
+			shape.position.y = win.shape.y + (win.shape.h * .5);
 
-			world.add(cube);
-			cubes.push(cube);
+			world.add(shape);
+			cubes.push(shape);
 		}
 	}
 
